@@ -6,7 +6,30 @@
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
      <script src="app.js"></script>
   </head>
-  <body>
+  <body data-ng-app="todo">
     <h1>To Do!</h1>
+    <div data-ng-controller='todosController as vm'>
+
+      <!-- Create ToDo -->
+      <div data-ng-click="vm.toggleForm()">New Todo</div>
+      <form data-ng-show="vm.formIsVisible" data-ng-submit="vm.create()">
+        <label>content</label>
+        <input type="text" name="content" data-ng-model="vm.content">
+      </form>
+
+      <!-- List Todos -->
+      <div data-ng-repeat="todo in vm.todos">
+        <p data-ng-show="!editTodo">{{$index + 1 + ". "}}{{todo}}</p>
+        <!-- Edit ToDo -->
+        <button class="edit" data-ng-click="vm.edit($index); editTodo = !editTodo">Edit Todo</button>
+        <form data-ng-show="editTodo">
+          <input type="text" name="content" data-ng-model="vm.content">
+          <button class="new" data-ng-click="vm.update($index); editTodo = !editTodo">Save</button>
+          <button data-ng-click='editTodo = !editTodo' class='cancel'>Cancel</button>
+        </form>
+        <button class="delete" data-ng-click="vm.delete($index)">Delete</button>
+      </div>
+
+    </div>
   </body>
 </html>
