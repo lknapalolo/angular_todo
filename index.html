@@ -3,10 +3,21 @@
   <head>
      <meta charset="UTF-8">
      <title>Angular ToDo App</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+     <script src="angular.js"></script>
      <script src="app.js"></script>
   </head>
-  <body>
+  <body data-ng-app="todo">
     <h1>To Do!</h1>
+     <main data-ng-controller="todos_controller as vm">
+      <section>
+        <input type="text" data-ng-model="vm.new_todo" placeholder="New task" />
+        <span data-ng-click="vm.create()">+</span>
+      </section>
+      <section data-ng-repeat="todo in vm.todos">
+        <p><input type="checkbox" data-ng-click="vm.destroy($index)">
+        {{todo}}
+        </p>
+      </section>
+    </main>
   </body>
 </html>
