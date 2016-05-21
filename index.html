@@ -2,21 +2,22 @@
   <html lang="en">
   <head>
      <meta charset="UTF-8">
-     <title>Angular ToDo App</title>
+     <title>tasks</title>
      <script src="angular.js"></script>
      <script src="app.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+     <link rel="stylesheet" href="styles.css">
   </head>
   <body data-ng-app="todo">
-    <h1>To Do!</h1>
-     <main data-ng-controller="todos_controller as vm">
+     <main data-ng-controller="todoController as tc">
       <section>
-        <input type="text" data-ng-model="vm.new_todo" placeholder="New task" />
-        <span data-ng-click="vm.create()">+</span>
+        <input type="text" data-ng-model="tc.new_todo" placeholder="Add new task" />
+        <input type="submit" data-ng-click="tc.create()" value="+">
       </section>
-      <section data-ng-repeat="todo in vm.todos">
-        <p><input type="checkbox" data-ng-click="vm.destroy($index)">
-        {{todo}}
-        </p>
+      <section data-ng-repeat="todo in tc.todos">
+        <div class="list"><input type="checkbox" data-ng-click="tc.destroy($index)">
+        <span data-ng-click="edit()">{{todo}}</span>
+      </div>
       </section>
     </main>
   </body>

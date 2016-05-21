@@ -1,0 +1,21 @@
+body{
+  width:100vw;
+  background: seashell;
+}
+main{
+  border: 1vh solid aliceblue;
+  background-color: rgb(235,235,235);
+  outline:0.5vh solid rgb(235,235,235);
+  margin: 4vh auto;
+  width:70vw;
+  padding:3vw;
+}
+input:focus{
+  outline:none;
+}
+div.list{
+  margin-top:1em;
+  background-color: seashell;
+  font-family: georgia;
+  color:rgb(50,50,50);
+}
